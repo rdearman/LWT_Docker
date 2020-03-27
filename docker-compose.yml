@@ -1,0 +1,30 @@
+# -*- mode: yaml, yaml-indent-offset: 2 -*-
+#   docker-compose up pool
+
+version: '3.3'
+
+services:
+  lwt:
+    build: "."
+    depends_on:
+      - db
+    links:
+      - "db"
+    volumes:
+      - "./lwt_html:/var/www/html"
+    ports:
+      - "0.0.0.0:80:80"
+    restart: always
+     
+  db:
+     image: mysql:5.7
+     volumes:
+       - db_data:/var/lib/mysql
+     environment:
+       MYSQL_DATABASE: "lwt"
+       MYSQL_ROOT_PASSWORD: "root"
+       MYSQL_ROOT_PASSWORD: "root"
+       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+volumes:
+  db_data: {}
