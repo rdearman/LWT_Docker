@@ -20,6 +20,7 @@ services:
      image: mysql:5.7
      volumes:
        - db_data:/var/lib/mysql
+     restart: always
      environment:
        MYSQL_DATABASE: "lwt"
        MYSQL_ROOT_PASSWORD: "root"
