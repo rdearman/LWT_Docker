@@ -1,7 +1,7 @@
-FROM php:7.2.7-apache
+FROM php:7.4-apache
 RUN apt update; \
     apt upgrade; \
-    apt-get install -y  mysql-client;
+    apt-get install -y default-mysql-client;
 RUN docker-php-ext-install mysqli
 COPY ./lwt_html /var/www/html
 ## COPY ./php.ini /usr/local/etc/php
